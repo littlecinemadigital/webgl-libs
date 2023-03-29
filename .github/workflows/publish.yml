@@ -13,14 +13,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
 
-      - name: Run install
-        run: yarn install && yarn build
-
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+      - name: Run Install and Build
+        run: |
+          yarn install
+          yarn build
       - name: Publish to NPM
         run: npm publish
         env:

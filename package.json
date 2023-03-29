@@ -1,6 +1,6 @@
 {
   "name": "@lcdigital/webgllib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "git@github.com:littlecinemadigital/webgl-libs.git",
   "contributors": [
     "Jonathan Blair <jon.blair@littlecinema.net>",
