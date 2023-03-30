@@ -3,10 +3,12 @@ import pluginTypescript from "@rollup/plugin-typescript";
 import pluginCommonjs from "@rollup/plugin-commonjs";
 import pluginNodeResolve from "@rollup/plugin-node-resolve";
 import { babel } from "@rollup/plugin-babel";
+import dts from "rollup-plugin-dts";
+import del from "rollup-plugin-delete";
 import * as path from "path";
-import { createRequire } from 'node:module';
+import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
-const pkg = require('./package.json');
+const pkg = require("./package.json");
 
 const moduleName = pkg.name.replace(/^@.*\//, "");
 const inputFileName = "src/index.ts";
@@ -19,6 +21,8 @@ const banner = `
    * Released under the ${pkg.license} license.
    */
 `;
+
+console.log(dts)
 
 export default [
   {
@@ -113,6 +117,20 @@ export default [
       pluginNodeResolve({
         browser: false,
       }),
+    ],
+  },
+  // Types
+  {
+    input: "./dist/dts/index.d.ts",
+    output: [
+      {
+        file: pkg.types,
+        format: "es"
+      }
+    ],
+    plugins: [
+      dts.default(),
+      del({ hook: "buildEnd", targets: "dist/dts" })
     ],
   },
 ];

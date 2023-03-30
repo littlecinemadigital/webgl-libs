@@ -5,6 +5,9 @@
       "DOM.Iterable",
       "ES2019"
     ],
+    "declaration": true,
+    "declarationDir": "dts",
+    "emitDeclarationOnly": true,
     "moduleResolution": "node",
     "target": "es2018",
     "strict": true,
