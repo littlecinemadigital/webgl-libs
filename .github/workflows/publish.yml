@@ -20,10 +20,7 @@ jobs:
           yarn install
           yarn build
       - name: Publish to NPM
-        run: |
-          ls
-          npm ci
-          npm publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
